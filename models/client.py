@@ -29,6 +29,8 @@
 #                 f"address={self.address}, mail={self.mail}, phone={self.phone}, referred_by={self.referred_by})")
 from sqlalchemy import Column, Integer, String
 from database.base import Base
+from sqlalchemy.orm import relationship
+
 
 class Client(Base):
     __tablename__ = 'clients'
@@ -40,6 +42,8 @@ class Client(Base):
     mail = Column(String(100))
     phone = Column(String(15))
     referred_by = Column(String(50))
+
+    jobs = relationship("Job", back_populates="client")
 
     def __repr__(self):
         return (f"<Client(id={self.id}, first_name={self.first_name}, last_name={self.last_name}, "
