@@ -3,9 +3,14 @@ from sqlalchemy.orm import sessionmaker
 from database.base import Base
 from models import Client, Job, SparePart, JobSparePart
 from services import get_jobs_by_client_id, get_jobs, create_job, delete_job, get_job
+from services.client_service import create_client, delete_client, get_all_clients, get_client_by_id
+
+
 def main():
     # Create an engine to connect to your database using PyMySQL
-    engine = create_engine('mysql+pymysql://maly:Maly403010@localhost/heimisha_manulan')
+    # engine = create_engine('mysql://ruth:ruthH0533137873@localhost/heimisha_manulan')
+    engine = create_engine('mysql+pymysql://ruth:ruthH0533137873@localhost/heimisha_manulan')
+
     Base.metadata.bind = engine
 
     # Create a session to interact with the database
